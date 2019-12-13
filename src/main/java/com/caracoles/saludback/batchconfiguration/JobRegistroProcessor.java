@@ -1,4 +1,4 @@
-package com.caracoles.saludback.ejemplo02;
+package com.caracoles.saludback.batchconfiguration;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,10 +17,9 @@ public class JobRegistroProcessor implements ItemProcessor<RegistroDTO, Registro
 	
 	@Override
 	public Registro process(RegistroDTO item) throws Exception {
+		
 		System.out.println(item);
-		
 		Date parsedDate = new Date();
-		
 		
 		final String datetime = item.getDatetime();
 		
@@ -29,11 +28,20 @@ public class JobRegistroProcessor implements ItemProcessor<RegistroDTO, Registro
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
+				
 		Registro newRegistro = new Registro();
+		
 		newRegistro.setDatetime(parsedDate);
-		System.out.println(newRegistro);
-			
+		newRegistro.setUserID(item.getUserID());
+		newRegistro.setBpm( (int) Math.round(item.getBpm()));
+		newRegistro.setStepAccumulated(item.getStepAccumulated());
+		newRegistro.setSetActivo(item.getSetActivo().toUpperCase().equals("ON"));
+		newRegistro.setLatitud(item.getLatitud());
+		newRegistro.setLongitud(item.getLongitud());
+		newRegistro.setPrecisionGps(item.getPrecisionGps());
+		newRegistro.setEstado(item.getEstado());
+				
+		System.out.println(newRegistro);	
 		
 		return newRegistro;
 	}

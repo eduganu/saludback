@@ -7,25 +7,14 @@ public class Registro implements Serializable {
 	private static final long serialVersionUID = -1L;
 	
 	private Date datetime;
-	/*private int userID;
+	private int userID;
 	private int bpm;
 	private int stepAccumulated;
+	private boolean setActivo;
 	private double latitud;
 	private double longitud;
 	private int precisionGps;
 	private int estado;
-	*/
-	
-	//SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss:SSS");
-	/*try {
-		//this.datetime = dateFormat.parse(datetime);
-		Date parsedDate = dateFormat.parse(datetime);
-	    this.datetime = new java.sql.Timestamp(parsedDate.getTime());
-	} catch (ParseException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}*/
-	
 	
 	public Date getDatetime() {
 		return datetime;
@@ -34,7 +23,7 @@ public class Registro implements Serializable {
 	public void setDatetime(Date datetime) {
 		this.datetime = datetime;
 	}
-	/*
+	
 	public int getUserID() {
 		return userID;
 	}
@@ -59,6 +48,14 @@ public class Registro implements Serializable {
 		this.stepAccumulated = stepAccumulated;
 	}
 	
+	public boolean isSetActivo() {
+		return setActivo;
+	}
+
+	public void setSetActivo(boolean setActivo) {
+		this.setActivo = setActivo;
+	}
+
 	public double getLatitud() {
 		return latitud;
 	}
@@ -98,18 +95,8 @@ public class Registro implements Serializable {
 	@Override
 	public String toString() {
 		return "Registro [datetime=" + datetime + ", userID=" + userID + ", bpm=" + bpm + ", stepAccumulated="
-				+ stepAccumulated + ", latitud=" + latitud + ", longitud=" + longitud + ", precisionGps=" + precisionGps
-				+ ", estado=" + estado + "]";
+				+ stepAccumulated + ", setActivo=" + setActivo + ", latitud=" + latitud + ", longitud=" + longitud
+				+ ", precisionGps=" + precisionGps + ", estado=" + estado + "]";
 	}
 	
-	*/
-
-	@Override
-	public String toString() {
-		return "Registro [datetime=" + datetime + "]";
-	}
-	
-	
-	
-
 }
