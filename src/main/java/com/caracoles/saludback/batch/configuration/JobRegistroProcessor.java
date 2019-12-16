@@ -1,4 +1,4 @@
-package com.caracoles.saludback.batchconfiguration;
+package com.caracoles.saludback.batch.configuration;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,7 +8,7 @@ import org.springframework.batch.item.ItemProcessor;
 import org.springframework.stereotype.Component;
 
 import com.caracoles.saludback.model.Registro;
-import com.caracoles.saludback.model.RegistroDTO;
+import com.caracoles.saludback.model.Usuario;
 
 @Component
 public class JobRegistroProcessor implements ItemProcessor<RegistroDTO, Registro> {
@@ -19,6 +19,7 @@ public class JobRegistroProcessor implements ItemProcessor<RegistroDTO, Registro
 	public Registro process(RegistroDTO item) throws Exception {
 		
 		System.out.println(item);
+		
 		Date parsedDate = new Date();
 		
 		final String datetime = item.getDatetime();
@@ -32,7 +33,11 @@ public class JobRegistroProcessor implements ItemProcessor<RegistroDTO, Registro
 		Registro newRegistro = new Registro();
 		
 		newRegistro.setDatetime(parsedDate);
-		newRegistro.setUserID(item.getUserID());
+		
+		Usuario usuario = new Usuario();
+		usuario.setUserID((long)item.getUserID());
+		
+		newRegistro.setUsuario(usuario);
 		newRegistro.setBpm( (int) Math.round(item.getBpm()));
 		newRegistro.setStepAccumulated(item.getStepAccumulated());
 		newRegistro.setSetActivo(item.getSetActivo().toUpperCase().equals("ON"));

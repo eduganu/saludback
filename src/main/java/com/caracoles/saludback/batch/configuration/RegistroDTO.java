@@ -1,4 +1,4 @@
-package com.caracoles.saludback.model;
+package com.caracoles.saludback.batch.configuration;
 
 public class RegistroDTO {
 

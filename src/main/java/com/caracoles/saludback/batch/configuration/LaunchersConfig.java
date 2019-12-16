@@ -1,4 +1,4 @@
-package com.caracoles.saludback.batchconfiguration;
+package com.caracoles.saludback.batch.configuration;
 
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.support.SimpleJobLauncher;

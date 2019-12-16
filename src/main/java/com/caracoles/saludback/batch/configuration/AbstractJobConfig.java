@@ -1,4 +1,4 @@
-package com.caracoles.saludback.batchconfiguration;
+package com.caracoles.saludback.batch.configuration;
 
 import javax.sql.DataSource;
 

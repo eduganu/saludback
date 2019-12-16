@@ -1,4 +1,4 @@
-package com.caracoles.saludback.batchconfiguration;
+package com.caracoles.saludback.batch.configuration;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
 
+
 import com.caracoles.saludback.model.Registro;
-import com.caracoles.saludback.model.RegistroDTO;
 
 @Configuration
 public class InputJobConfig extends AbstractJobConfig {
@@ -57,7 +57,7 @@ public class InputJobConfig extends AbstractJobConfig {
 	public JdbcBatchItemWriter<Registro> writer2(){
 		return new JdbcBatchItemWriterBuilder<Registro>()
 				.itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
-				.sql("INSERT INTO REGISTROS (datetime, user_id, bpm, step_acc, set_activo, latitud, longitud, precision, estado) VALUES (:datetime, :userID, :bpm, :stepAccumulated, :setActivo, :latitud, :longitud, :precisionGps, :estado)")
+				.sql("INSERT INTO REGISTROS (datetime, user_id, bpm, step_acc, set_activo, latitud, longitud, precision, estado) VALUES (:datetime, :usuario.userID, :bpm, :stepAccumulated, :setActivo, :latitud, :longitud, :precisionGps, :estado)")
 				.dataSource(dataSource)
 				.build();
 	}
